@@ -28,7 +28,7 @@ export const Post = () => {
         Back
       </button>
       <Link
-        to={`/blog/${id}/edit`}
+        to={`/posts/${id}/edit`}
         style={{
           display: 'block',
           marginBottom: '2rem',
@@ -52,17 +52,6 @@ export const Post = () => {
     </div>
   );
 };
-
-async function getPost(id) {
-  return await fetch(`http://localhost:3001/posts/${id}`).then((response) =>
-    response.json()
-  );
-}
-async function getComments(id) {
-  return await fetch(`http://localhost:3001/comments?postId=${id}`).then(
-    (response) => response.json()
-  );
-}
 
 const AsyncPost = () => {
   const post = useAsyncValue();
@@ -94,12 +83,21 @@ const AsyncComments = () => {
     </>
   );
 };
-
+async function getPost(id) {
+  return await fetch(`http://localhost:3001/posts/${id}`).then((response) =>
+    response.json()
+  );
+}
+async function getComments(id) {
+  return await fetch(`http://localhost:3001/comments?postId=${id}`).then(
+    (response) => response.json()
+  );
+}
 export const postLoader = async ({ params }) => {
   const id = params.id;
-  return defer({
-    post: getPost(id),
-    comments: getComments(id),
+  return {
+    post: await getPost(id),
+    comments: await getComments(id),
     id,
-  });
+  };
 };

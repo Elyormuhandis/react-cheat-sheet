@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import { Filter } from '../components/filter.component';
 
-export const Blog = () => {
+export const Posts = () => {
   const { posts } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
   const postQuery = searchParams.get('post') || '';
@@ -16,12 +16,15 @@ export const Blog = () => {
 
   return (
     <div>
-      <h1>Our news</h1>
+      <h1>Posts</h1>
       <Filter
         latest={latest}
         setSearchParams={setSearchParams}
         postQuery={postQuery}
       />
+      <Link to='add' style={{ marginBottom: '1rem', display: 'block' }}>
+        Add new post
+      </Link>
       <Suspense fallback={<h1>Loading...</h1>}>
         <Await resolve={posts}>
           {(resolvedPosts) => (
@@ -49,14 +52,15 @@ export const Blog = () => {
   );
 };
 
-async function getPostById() {
-  return await fetch('http://localhost:3001/posts').then((response) =>
-    response.json()
-  );
+async function getPosts() {
+  const res = await fetch('http://localhost:3001/posts');
+  if (!res.ok)
+    throw new Response('', { status: res.status, statusText: 'URL error!' });
+  return res.json();
 }
 
 export const postsLoader = async () => {
   return defer({
-    posts: getPostById(),
+    posts: getPosts(),
   });
 };

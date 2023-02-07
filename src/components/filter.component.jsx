@@ -30,7 +30,7 @@ export const Filter = ({ setSearchParams, postQuery, latest }) => {
             setsearchLatest(e.target.checked);
           }}
         />
-        latest 20
+        latest
       </label>
       <input style={{ color: 'black' }} type='submit' value='Search' />
     </form>

@@ -11,9 +11,9 @@ export const Layout = () => {
           Home
         </NavLink>
         <NavLink
-          to='/blog'
+          to='/posts'
           className={({ isActive }) => (isActive ? 'active-link' : '')}>
-          Blog
+          Posts
         </NavLink>
         <NavLink to='/about'>About</NavLink>
       </header>
