@@ -14,12 +14,14 @@ import { Login } from '../pages/login.page';
 import { RequireAuth } from '../hoc/require.auth';
 import { ErrorPage } from '../pages/error.page';
 import { AddPost, createPostAction } from '../pages/add-post.page';
+import { Goods } from '../pages/goods.page';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route index element={<Home />} />
       <Route path='login' element={<Login />} />
+      <Route path='goods' element={<Goods />} />
       <Route
         path='posts'
         element={<Posts />}

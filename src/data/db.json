@@ -1,4 +1,18 @@
 {
+  "goods": [
+    {
+      "name": "melon",
+      "id": 1
+    },
+    {
+      "name": "watermelon",
+      "id": 2
+    },
+    {
+      "name": "napkins",
+      "id": 3
+    }
+  ],
   "posts": [
     {
       "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",

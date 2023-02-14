@@ -15,6 +15,7 @@ export const Layout = () => {
           className={({ isActive }) => (isActive ? 'active-link' : '')}>
           Posts
         </NavLink>
+        <NavLink to='/goods'>Goods</NavLink>
         <NavLink to='/about'>About</NavLink>
       </header>
       <main>
